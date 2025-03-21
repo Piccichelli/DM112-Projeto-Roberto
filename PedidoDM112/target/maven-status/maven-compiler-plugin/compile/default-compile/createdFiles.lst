@@ -1,0 +1,13 @@
+br\inatel\dm112\interfaces\OrderInterface.class
+br\inatel\dm112\model\dao\OrderRepository.class
+br\inatel\dm112\model\entities\OrderEntity.class
+br\inatel\dm112\rest\OrderRest.class
+br\inatel\dm112\rest\support\ResourceExceptionHandler.class
+br\inatel\dm112\model\Order.class
+br\inatel\dm112\model\Order$STATUS.class
+br\inatel\dm112\services\OrderService.class
+br\inatel\dm112\rest\support\OrderDuplicateException.class
+br\inatel\dm112\PedidoApp.class
+br\inatel\dm112\rest\support\OrderStandardError.class
+br\inatel\dm112\rest\support\OrderNotFoundException.class
+br\inatel\dm112\rest\support\InvalidOrderOperationException.class
