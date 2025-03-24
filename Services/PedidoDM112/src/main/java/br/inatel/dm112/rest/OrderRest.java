@@ -44,6 +44,14 @@ public class OrderRest implements OrderInterface {
 	}
 
 	@Override
+	@GetMapping("/orders/delivery-man/{deliveryManId:.+}")
+	public List<Order> searchOrdersByDeliveryManId(@PathVariable("deliveryManId") Integer deliveryManId) {
+
+		System.out.println("OrderRest - searchOrdersByDeliveryManId");
+		return service.searchOrdersByDeliveryManId(deliveryManId).stream().map(OrderService::convertToOrder).collect(Collectors.toList());
+	}
+
+	@Override
 	@PutMapping("/orders/{orderNumber}/pending")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void startOrderPayment(@PathVariable("orderNumber") Integer orderNumber) {
@@ -59,6 +67,24 @@ public class OrderRest implements OrderInterface {
 
 		System.out.println("OrderRest - confirmOrderPayment " + orderNumber);
 		service.confirmPayment(orderNumber);
+	}
+
+	@Override
+	@PutMapping("/orders/{orderNumber}/startDelivery")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void startOrderDelivery(@PathVariable("orderNumber") Integer orderNumber) {
+
+		System.out.println("OrderRest - startOrderPayment " + orderNumber);
+		service.startDelivery(orderNumber);
+	}
+
+	@Override
+	@PutMapping("/orders/{orderNumber}/concludeDelivery")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void confirmOrderDelivery(@PathVariable("orderNumber") Integer orderNumber) {
+
+		System.out.println("OrderRest - confirmOrderPayment " + orderNumber);
+		service.confirmDelivery(orderNumber);
 	}
 
 	@Override

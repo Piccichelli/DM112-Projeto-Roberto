@@ -28,6 +28,7 @@ public class PedidoApp implements CommandLineRunner {
 		order1.setOrderDate(new Date());
 		order1.setStatus(1);
 		order1.setValue(123.45f);
+		order1.setDeliveryManId(1);
 
 		repo.save(order1);
 
@@ -36,6 +37,7 @@ public class PedidoApp implements CommandLineRunner {
 		order2.setOrderDate(new Date());
 		order2.setStatus(1);
 		order2.setValue(234.56f);
+		order2.setDeliveryManId(2);
 
 		repo.save(order2);
 	}

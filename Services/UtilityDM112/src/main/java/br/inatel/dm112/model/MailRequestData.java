@@ -4,12 +4,12 @@ public class MailRequestData {
 
 	private int orderNumber;
 	private String to;
-	private byte[] content;
+	private String content;
 
 	public MailRequestData() {
 	}
 
-	public MailRequestData(int orderNumber, String to, byte[] content) {
+	public MailRequestData(int orderNumber, String to, String content) {
 		this.orderNumber = orderNumber;
 		this.to = to;
 		this.content = content;
@@ -31,11 +31,11 @@ public class MailRequestData {
 		this.to = to;
 	}
 
-	public byte[] getContent() {
+	public String getContent() {
 		return content;
 	}
 
-	public void setContent(byte[] content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 	

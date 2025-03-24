@@ -29,6 +29,8 @@ public class OrderEntity {
 
 	private int status;
 
+	private int deliveryManId;
+
 	@Column(name = "dataPedido", nullable = false)
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
@@ -69,6 +71,12 @@ public class OrderEntity {
 		this.status = status;
 	}
 
+	public int getDeliveryManId() {
+		return deliveryManId;
+	}
+
+	public void setDeliveryManId(int deliveryManId) {this.deliveryManId = deliveryManId;}
+
 	public Date getOrderDate() {
 		return orderDate;
 	}
@@ -103,7 +111,7 @@ public class OrderEntity {
 
 	@Override
 	public String toString() {
-		return "OrderEntity [number=" + number + ", CPF=" + CPF + ", value=" + value + ", status=" + status + ", orderDate="
+		return "OrderEntity [number=" + number + ", CPF=" + CPF + ", value=" + value + ", status=" + status + ", deliveryManId=" + deliveryManId + ", orderDate="
 				+ orderDate + ", issueDate=" + issueDate + ", paymentDate=" + paymentDate + "]";
 	}
 

@@ -13,4 +13,7 @@ public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
 
 	@Transactional(readOnly = true)
 	List<OrderEntity> findByCPF(String cpf);
+
+	@Transactional(readOnly = true)
+	List<OrderEntity> findByDeliveryManId(int deliveryManId);
 }

@@ -5,7 +5,7 @@ import java.util.Date;
 public class Order {
 
 //	@JsonIgnore
-	public static enum STATUS { FILLED, PENDING, CONFIRMED }
+	public static enum STATUS { FILLED, PENDING, CONFIRMED, DELIVERING, DELIVERED }
 
 	private int number;
 
@@ -14,6 +14,8 @@ public class Order {
 	private float value;
 
 	private int status;
+
+	private int deliveryManId;
 
 //	@JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
 	private Date orderDate;
@@ -25,7 +27,7 @@ public class Order {
 	public Order() {
 	}
 
-	public Order(int number, String cpf, float value, int status, Date orderDate, Date issueDate, Date paymentDate) {
+	public Order(int number, String cpf, float value, int status, Date orderDate, Date issueDate, Date paymentDate, int deliveryManId) {
 		super();
 		this.number = number;
 		this.cpf = cpf;
@@ -34,6 +36,7 @@ public class Order {
 		this.orderDate = orderDate;
 		this.issueDate = issueDate;
 		this.paymentDate = paymentDate;
+		this.deliveryManId = deliveryManId;
 	}
 
 	public int getNumber() {
@@ -59,6 +62,12 @@ public class Order {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+	public int getDeliveryManId() {
+		return deliveryManId;
+	}
+
+	public void setDeliveryManId(int deliveryManId) {this.deliveryManId = deliveryManId;}
 
 	public Date getOrderDate() {
 		return orderDate;
@@ -94,7 +103,7 @@ public class Order {
 
 	@Override
 	public String toString() {
-		return "Order [number=" + number + ", cpf=" + cpf + ", value=" + value + ", status=" + status + ", orderDate="
+		return "Order [number=" + number + ", cpf=" + cpf + ", value=" + value + ", status=" + status + ", deliveryManId=" + deliveryManId + ", orderDate="
 				+ orderDate + ", issueDate=" + issueDate + ", paymentDate=" + paymentDate + "]";
 	}
 

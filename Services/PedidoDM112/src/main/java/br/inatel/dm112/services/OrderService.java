@@ -32,6 +32,11 @@ public class OrderService {
 		return list;
 	}
 
+	public List<OrderEntity> searchOrdersByDeliveryManId(int deliveryManId) {
+		List<OrderEntity> list = repo.findByDeliveryManId(deliveryManId);
+		return list;
+	}
+
 	public void updateOrder(Order order, Integer orderNumber) {
 
 		OrderEntity entity = getOrder(orderNumber);
@@ -57,6 +62,21 @@ public class OrderService {
 		entity.setStatus(Order.STATUS.CONFIRMED.ordinal());
 		repo.save(entity);
 		System.out.println("OrderImpl confirmPayment - confirmou o pagamento do pedido com número: " + orderNumber);
+	}
+
+	public void startDelivery(int orderNumber) {
+		OrderEntity entity = getOrder(orderNumber);
+
+		entity.setStatus(Order.STATUS.DELIVERING.ordinal());
+		repo.save(entity);
+		System.out.println("OrderImpl startDelivery - começou a entrega do pedido: " + orderNumber);
+	}
+
+	public void confirmDelivery(int orderNumber) {
+		OrderEntity entity = getOrder(orderNumber);
+		entity.setStatus(Order.STATUS.DELIVERED.ordinal());
+		repo.save(entity);
+		System.out.println("OrderImpl confirmPayment - confirmou a entrega do pedido com número: " + orderNumber);
 	}
 
 	public OrderEntity createOrder(Order order) {
@@ -85,11 +105,12 @@ public class OrderService {
 		entity.setOrderDate(order.getOrderDate());
 		entity.setIssueDate(order.getIssueDate());
 		entity.setPaymentDate(order.getPaymentDate());
+		entity.setDeliveryManId(order.getDeliveryManId());
 	}
 
 	public static Order convertToOrder(OrderEntity entity) {
 		Order order = new Order(entity.getNumber(), entity.getCPF(), entity.getValue(), entity.getStatus(),
-				entity.getOrderDate(), entity.getIssueDate(), entity.getPaymentDate());
+				entity.getOrderDate(), entity.getIssueDate(), entity.getPaymentDate(), entity.getDeliveryManId());
 		return order;
 	}
 
@@ -101,6 +122,7 @@ public class OrderService {
 		entity.setOrderDate(order.getOrderDate());
 		entity.setIssueDate(order.getIssueDate());
 		entity.setPaymentDate(order.getPaymentDate());
+		entity.setDeliveryManId(order.getDeliveryManId());
 		return entity;
 	}
 

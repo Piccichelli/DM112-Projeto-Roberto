@@ -12,11 +12,17 @@ public interface OrderInterface {
 
 	public List<Order> searchOrders(String cpf);
 
+	public List<Order> searchOrdersByDeliveryManId(Integer deliveryManId);
+
 	public void updateOrder(Order order, Integer orderNumber);
 	
 	public void startOrderPayment(Integer orderNumber);
 	
 	public void confirmOrderPayment(Integer orderNumber);
+
+	public void startOrderDelivery(Integer orderNumber);
+
+	public void confirmOrderDelivery(Integer orderNumber);
 
 	public List<Order> getAllOrders();
 }

@@ -34,20 +34,12 @@ public abstract class JavaNativeMailAdapter implements MailAdapter {
 			Message message = new MimeMessage(session);
 			message.setFrom(new InternetAddress(mailData.getFrom()));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(mailData.getTo()));
-			message.setSubject("Boleto do pedido " + mailData.getOrderNumber());
+			message.setSubject("Pedido entregue! " + mailData.getOrderNumber());
 
 			Multipart multipart = new MimeMultipart();
 			BodyPart messageBodyPartText = new MimeBodyPart(); // texto
-			messageBodyPartText.setText("Boleto do pedido " + mailData.getOrderNumber() + " gerado pelo E-comerce DM112.");
+			messageBodyPartText.setText("Entrega realizada do pedido " + mailData.getOrderNumber() + ".");
 			multipart.addBodyPart(messageBodyPartText);
-
-			BodyPart messageBodyPartAtt = new MimeBodyPart(); // anexo
-			ByteArrayDataSource source = new ByteArrayDataSource(mailData.getContent(), "application/pdf");
-			source.setName("Boleto" + mailData.getOrderNumber() + ".pdf");
-
-			messageBodyPartAtt.setDataHandler(new DataHandler(source));
-			messageBodyPartAtt.setFileName("Boleto_Venda" + mailData.getOrderNumber() + ".pdf");
-			multipart.addBodyPart(messageBodyPartAtt);
 
 			message.setContent(multipart);
 

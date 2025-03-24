@@ -7,12 +7,12 @@ public class MailData {
 	private String password;
 	private String sendgridAPIKey;
 	private String to;
-	private byte[] content;
+	private String content;
 
 	public MailData() {
 	}
 
-	public MailData(int orderNumber, String from, String password, String to, byte[] content) {
+	public MailData(int orderNumber, String from, String password, String to, String content) {
 		this.orderNumber = orderNumber;
 		this.from = from;
 		this.password = password;
@@ -52,11 +52,11 @@ public class MailData {
 		this.to = to;
 	}
 
-	public byte[] getContent() {
+	public String getContent() {
 		return content;
 	}
 
-	public void setContent(byte[] content) {
+	public void setContent(String content) {
 		this.content = content;
 	}
 
